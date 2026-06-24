@@ -1,5 +1,5 @@
 #Creación de la interfaz de red para la máquina virtual 1   
-resource "azurerm_network_interface" "main" {
+resource "azurerm_network_interface" "main1" {
   name                = "peer1-nic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -17,7 +17,7 @@ resource "azurerm_virtual_machine" "main1" {
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.main1.id] #sirve para conectar la máquina virtual a la interfaz de red
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = "Standard_B2als_v2"
 
   #Elimina el disco del sistema operativo automáticamente cuando se elimina la máquina virtual
   delete_os_disk_on_termination = true
@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine" "main1" {
 
 
 #Creación de la interfaz de red para la máquina virtual 2  
-resource "azurerm_network_interface" "main" {
+resource "azurerm_network_interface" "main2" {
   name                = "peer2-nic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -72,7 +72,7 @@ resource "azurerm_virtual_machine" "main2" {
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.main1.id] #sirve para conectar la máquina virtual a la interfaz de red
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = "Standard_B2als_v2"
 
   #Elimina el disco del sistema operativo automáticamente cuando se elimina la máquina virtual
   delete_os_disk_on_termination = true
@@ -101,7 +101,7 @@ resource "azurerm_virtual_machine" "main2" {
     disable_password_authentication = false
   }
   tags = {
-    environment = "staging"
+    environment = "dev"
   }
 }
 
