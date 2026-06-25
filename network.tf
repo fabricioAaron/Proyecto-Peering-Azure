@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
   name     = "peering-demo"
-  location = "spain central"
+  location = var.location
 }
 
 # Creación de la red virtual 1
