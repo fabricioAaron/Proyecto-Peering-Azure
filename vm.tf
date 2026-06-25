@@ -71,7 +71,7 @@ resource "azurerm_virtual_machine" "main2" {
   name                  = "peer2-vm2"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
-  network_interface_ids = [azurerm_network_interface.main1.id] #sirve para conectar la máquina virtual a la interfaz de red
+  network_interface_ids = [azurerm_network_interface.main2.id] #sirve para conectar la máquina virtual a la interfaz de red
   vm_size               = "Standard_B2als_v2"
 
   #Elimina el disco del sistema operativo automáticamente cuando se elimina la máquina virtual
@@ -87,7 +87,7 @@ resource "azurerm_virtual_machine" "main2" {
     version   = "latest"                       #sirve para configurar la versión de la imagen, en este caso la última
   }
   storage_os_disk {                    #sirve para configurar el disco del sistema operativo
-    name              = "myosdisk1"    #nombre del disco del sistema operativo
+    name              = "myosdisk2"    #nombre del disco del sistema operativo
     caching           = "ReadWrite"    #sirve para habilitar la caché de lectura y escritura
     create_option     = "FromImage"    #sirve para crear el disco del sistema operativo desde una imagen
     managed_disk_type = "Standard_LRS" #sirve para configurar el tipo de disco del sistema operativo, en este caso Standard_LRS
