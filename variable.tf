@@ -11,7 +11,7 @@ variable "vm_count" {
 
 variable "keyvault_name" {
   type    = string
-  default = "peeringkeyvault"
+  default = "keyvaulpass"
 }
 
 variable "keyvault_location" {
@@ -21,10 +21,16 @@ variable "keyvault_location" {
 
 variable "keyvault_resource_group_name" {
   type    = string
-  default = "peering-demo"
+  default = "proyecto_peering"
 }
 
 variable "name_pass" {
   type    = string
   default = "vmpass"
+}
+
+variable "password" {
+  description = "contraseña para las mv"
+  type        = string
+  sensitive   = true #esto hace que la contraseña no se muestre en la terminal
 }

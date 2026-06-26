@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "peering-demo"
+  name     = var.keyvault_resource_group_name
   location = var.location
 }
 

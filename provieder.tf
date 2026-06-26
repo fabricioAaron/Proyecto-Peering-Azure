@@ -12,8 +12,8 @@ terraform {
 provider "azurerm" {
   features {
     key_vault {
-      purge_soft_delete_on_destroy    = true
-      recover_soft_deleted_key_vaults = true
+      purge_soft_delete_on_destroy    = true #sirve para habilitar el borrado suave de los key vaults
+      recover_soft_deleted_key_vaults = true #sirve para habilitar la recuperación de los key vaults
     }
   }
 }

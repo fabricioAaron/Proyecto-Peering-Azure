@@ -7,7 +7,7 @@ resource "azurerm_key_vault" "key_vault" {
   resource_group_name         = azurerm_resource_group.rg.name
   enabled_for_disk_encryption = true #sirve para habilitar el cifrado de disco de azure
   tenant_id                   = data.azurerm_client_config.current.tenant_id
-  soft_delete_retention_days  = 7
+  soft_delete_retention_days  = 7 #sirve para establecer el período de retención de los key vaultsº
   purge_protection_enabled    = false
 
   sku_name = "standard"
@@ -25,7 +25,7 @@ resource "azurerm_key_vault" "key_vault" {
     ]
 
     secret_permissions = [
-      "Get", "Set", "List", "Delete"
+      "Get", "Set", "List", "Delete", "Recover", "Purge"
     ]
 
     storage_permissions = [
@@ -38,5 +38,5 @@ resource "azurerm_key_vault" "key_vault" {
 resource "azurerm_key_vault_secret" "password" {
   name         = var.name_pass
   key_vault_id = azurerm_key_vault.key_vault.id
-  value        = "Password1234!"
+  value        = var.password
 }
